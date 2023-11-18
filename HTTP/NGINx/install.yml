@@ -7,9 +7,10 @@
   remote_user: debian
   become_method: sudo
   tasks:
-    - name : Define hostname
-      shell: hostnamectl set-hostname dev.rfs.local
-      become: yes
+    - name: Set a hostname
+      ansible.builtin.hostname:
+        name: web01
+        use: systemd
 
     - name: Install Dependencies
       ansible.builtin.apt:
