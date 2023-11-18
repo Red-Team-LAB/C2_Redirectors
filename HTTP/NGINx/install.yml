@@ -2,10 +2,10 @@
 - hosts: all
   tasks:
     - name: Adding APT repository key
-    when: ansible_os_family == 'Debian'
-    sudo: yes
-    apt_key:
-      url: "http://nginx.org/keys/nginx_signing.key"
+      when: ansible_os_family == 'Debian'
+      sudo: yes
+      apt_key:
+        url: "http://nginx.org/keys/nginx_signing.key"
     
     - name : Define hostname
       shell: hostnamectl set-hostname jumper.rfs.local
