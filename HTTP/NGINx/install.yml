@@ -1,5 +1,11 @@
 ---
-- hosts: all
+#
+# NginX redirector Debian 12 by RFS
+#
+
+- hosts: "*"
+  remote_user: debian
+  become_method: sudo
   tasks:
     - name: Adding APT repository key
       when: ansible_os_family == 'Debian'
