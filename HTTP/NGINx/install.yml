@@ -7,21 +7,22 @@
   remote_user: debian
   become_method: sudo
   tasks:
+    - name : Define hostname
+      shell: hostnamectl set-hostname dev.rfs.local
+      become: yes
+      
     - name: Adding APT repository key
       when: ansible_os_family == 'Debian'
       sudo: yes
       apt_key:
         url: "http://nginx.org/keys/nginx_signing.key"
-    
-    - name : Define hostname
-      shell: hostnamectl set-hostname jumper.rfs.local
-      become: yes
+
     - name: Install Dependencies
       ansible.builtin.apt:
         pkg:
         - ssh
         - libreswan
-    - name: Install nginx
-      apt: name=nginx state=latest
+        - nginx
+
     - name: start nginx
       shell: systemctl start nginx
