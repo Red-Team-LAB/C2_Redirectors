@@ -6,10 +6,7 @@
     sudo: yes
     apt_key:
       url: "http://nginx.org/keys/nginx_signing.key"
-    tags:
-      - nginx
-      - frontend
-      - repo
+    
     - name : Define hostname
       shell: hostnamectl set-hostname jumper.rfs.local
       become: yes
