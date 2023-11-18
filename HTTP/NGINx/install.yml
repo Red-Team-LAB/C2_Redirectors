@@ -10,13 +10,15 @@
     - name : Define hostname
       shell: hostnamectl set-hostname dev.rfs.local
       become: yes
-      
+
     - name: Install Dependencies
       ansible.builtin.apt:
         pkg:
         - ssh
         - libreswan
         - nginx
+      become: yes
 
     - name: start nginx
       shell: systemctl start nginx
+      become: yes
